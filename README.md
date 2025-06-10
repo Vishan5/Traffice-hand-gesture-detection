@@ -1,60 +1,49 @@
-# Pose estimation and classification with TensorFlow Lite
+# Traffic Police Hand Gesture Recognition
 
-See this blog post (TBD) for a full guide on doing pose estimation and
-classification using TensorFlow Lite.
-*   Pose estimation: Detect keypoints, such as eye, ear, arm etc., from an input
-    image.
-    *   Input: An image
-    *   Output: A list of keypoint coordinates and confidence score.
-*   Pose classificaiton: Classify a human pose into predefined classes, such as
-    different yoga poses. Pose classification internally use pose estimation to
-    detect the keypoints, and use the keypoints to classify the pose.
-    *   Input: An image
-    *   Output: A list of predefined classes and their confidence score.
+This project recognizes traffic police hand gestures in real-time using a webcam. It leverages [MediaPipe](https://google.github.io/mediapipe/) for pose estimation and uses rule-based logic to classify gestures such as STOP, WAIT, TURN LEFT, TURN RIGHT, MOVE STRAIGHT, and VIP SALUTE.
 
-This sample can run on Raspberry Pi or any computer that has a camera. It uses
-OpenCV to capture images from the camera and TensorFlow Lite to run inference on
-the input image.
+## Features
 
-## Install the dependencies
+- Real-time hand gesture recognition using a webcam
+- Uses MediaPipe for pose detection
+- Rule-based classification (no ML model training required)
+- Easily extendable for more gestures
 
-*   Run this script to install the Python dependencies, and download the TFLite
-    models. `sh setup.sh`
 
-## Run the pose estimation sample
 
-*   Use this command to run the pose estimation sample using the default
-    `movenet_lightning` model.
+## Setup Instructions
 
-```
-python3 pose_estimation.py
+### 1. Clone the Repository
+
+```bash
+git clone <repository-url>
+cd Traffic-Hand-gesture
 ```
 
-*   You can optionally specify the `model_name` parameter to try other pose
-    estimation models:
-    *   Use values:
-        * Single-pose: `posenet`, `movenet_lightning`, `movenet_thunder`
-        * Multi-poses: `movenet_multipose`
-    *   The default value is `movenet_lightning`.
+### 2. Install Dependencies and Download Models
 
-```
-python3 pose_estimation.py --model_name movenet_thunder
+Run the setup script (Linux/Mac):
+
+```bash
+bash setup.sh
 ```
 
-## Run the pose classification sample
+Or manually install dependencies:
 
-*   Use this command to run the pose estimation sample using the default
-    `movenet_lightning` pose estimation model and the `classifier.tflite` yoga
-    pose classification model.
-
-```
-python3 pose_estimation.py \
-    --classifier classifier
-    --label_file labels.txt
+```bash
+pip install --upgrade pip
+pip install -r requirements.txt
 ```
 
-*   If you want to train a custom pose classification model, check out
-    [this tutorial](https://www.tensorflow.org/lite/tutorials/pose_classification).
+> **Note:** The `setup.sh` script will also download required TFLite models into the `models/` directory.
+
+### 3. Run the Application
+
+```bash
+python detect.py
+```
+
+This will open your webcam and start recognizing hand gestures.
 
 ## Customization options
 

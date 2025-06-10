@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+Dataset/
+poses_images_out_train/
+Output_Image/
