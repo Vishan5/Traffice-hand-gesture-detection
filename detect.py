@@ -9,8 +9,8 @@ from data import BodyPart
 from ml import Movenet
 
 # Load MoveNet and the model
-movenet = Movenet('movenet_thunder')
-model = load_model('/model_paths/gesture_model.h5')
+movenet = Movenet('./model_paths/movenet_thunder')
+model = load_model('./model_paths/gesture_model.h5')
 
 # Class names and poses
 class_n = ['NoPose', 'Pose1', 'Pose2', 'Pose3', 'Pose4', 'Pose5', 'Pose6', 'Pose7']
